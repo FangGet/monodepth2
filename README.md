@@ -12,7 +12,7 @@ This is a simple Pytorch implementation for paper:
 
 
 
-<b>As we has no suitable GPU resources for ResNet101 experiment, we only trained ResNet18 with self-attention block(Self-Attn) and discrete disparity volume(DDV) , which corrsponding to Section 4.4 Table 2</b>
+<b>As we have no suitable GPU resources for ResNet101 experiment, we only train ResNet18 with self-attention block(Self-Attn) and discrete disparity volume(DDV) , which corrsponding to Section 4.4 Table 2 of the paper.</b>
 
 
 

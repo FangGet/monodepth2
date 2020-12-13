@@ -36,7 +36,7 @@ we support four kinds of models for depth_model_type:
 
 ## Ablation Results
 
-| Backbone | Self-Attn | DDV  | Model                                                        | Abs Rel | Sq Rel | RMSE  | RMSE log | $\delta < 1.25$ | $\delta < 1.25^2$ | $\delta < 1.25^3$ |
+| Backbone | Self-Attn | DDV  | Model                                                        | Abs Rel | Sq Rel | RMSE  | RMSE log | ![](http://latex.codecogs.com/gif.latex?\\delta<1.25) | ![](http://latex.codecogs.com/gif.latex?\\delta<1.25^2) | ![](http://latex.codecogs.com/gif.latex?\\delta<1.25^3) |
 | -------- | --------- | ---- | ------------------------------------------------------------ | ------- | ------ | ----- | -------- | --------------- | ----------------- | ----------------- |
 | Baseline | ❌         | ❌    | [link](https://storage.googleapis.com/niantic-lon-static/research/monodepth2/mono_640x192.zip) | 0.115   | 0.903  | 4.863 | 0.193    | 0.877           | 0.959             | 0.981             |
 | ResNet18 | ❌         | ✅    | [link](https://drive.google.com/drive/folders/1gg1TLwD1_-QUmmFvhFwCvLHXdClXo_Ia?usp=sharing) | 0.113   | 0.853  | 4.801 | 0.192    | 0.876           | 0.959             | 0.981             |

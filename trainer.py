@@ -57,7 +57,7 @@ class Trainer:
         self.parameters_to_train += list(self.models["encoder"].parameters())
 
         self.models["depth"] = networks.DepthDecoder(
-            self.models["encoder"].num_ch_enc, self.opt.scales)
+            self.models["encoder"].num_ch_enc, self.opt.scales, num_output_channels=self.opt.num_output_channels, min_depth=self.opt.min_depth, max_depth=self.opt.max_depth, model_type=self.opt.depth_model_type)
         self.models["depth"].to(self.device)
         self.parameters_to_train += list(self.models["depth"].parameters())
 

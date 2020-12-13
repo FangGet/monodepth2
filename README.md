@@ -1,4 +1,57 @@
-# Monodepth2
+# Monodepth2_SelfAttn_DDV
+This is a simple Pytorch implementation for paper:
+```
+@inproceedings{johnston2020self,
+  title={Self-supervised Monocular Trained Depth Estimation using Self-attention and Discrete Disparity Volume},
+  author={Johnston, Adrian and Carneiro, Gustavo},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={4756--4765},
+  year={2020}
+}
+```
+
+
+
+<b>As we has no suitable GPU resources for ResNet101 experiment, we only trained ResNet18 with self-attention block(Self-Attn) and discrete disparity volume(DDV) , which corrsponding to Section 4.4 Table 2</b>
+
+
+
+## Evaluation
+
+The following example command evaluates the trained model:
+
+```
+python evaluate_depth.py --load_weights_folder /path/to/models/ --eval_mono --depth_model_type full
+```
+
+we support four kinds of models for depth_model_type:
+
+* base
+* nlb
+* ddv
+* full
+
+
+
+
+## Ablation Results
+
+| Backbone | Self-Attn | DDV  | Model                                                        | Abs Rel | Sq Rel | RMSE  | RMSE log | $\delta < 1.25$ | $\delta < 1.25^2$ | $\delta < 1.25^3$ |
+| -------- | --------- | ---- | ------------------------------------------------------------ | ------- | ------ | ----- | -------- | --------------- | ----------------- | ----------------- |
+| Baseline | ❌         | ❌    | [link](https://storage.googleapis.com/niantic-lon-static/research/monodepth2/mono_640x192.zip) | 0.115   | 0.903  | 4.863 | 0.193    | 0.877           | 0.959             | 0.981             |
+| ResNet18 | ❌         | ✅    | [link](https://drive.google.com/drive/folders/1gg1TLwD1_-QUmmFvhFwCvLHXdClXo_Ia?usp=sharing) | 0.113   | 0.853  | 4.801 | 0.192    | 0.876           | 0.959             | 0.981             |
+| ResNet18 | ✅         | ❌    | [link](https://drive.google.com/drive/folders/18Zh2Cszeq5GmdKGZ-kCgPAX-QIZ21zYl?usp=sharing) | 0.111   | 0.824  | 4.739 | 0.189    | 0.880           | 0.961             | 0.981             |
+| ResNet18 | ✅         | ✅    | [link](https://drive.google.com/drive/folders/1A5X3XlG14FjP_AWKuo0wSZG9Kf7janHU?usp=sharing) | 0.112   | 0.870  | 4.765 | 0.189    | 0.881           | 0.960             | 0.981             |
+
+
+
+## ResNet-101 Training
+
+We implemented ResNet-101 model but can hardly train it with limited GPU resources, code will be uploaded after model  is trained properly. We recommend you refer to following code for [In-Place Activated BatchNorm](https://arxiv.org/abs/1712.02616)
+
+[https://github.com/mapillary/inplace_abn](https://github.com/mapillary/inplace_abn)
+
+
 
 This is the reference PyTorch implementation for training and testing depth estimation models using the method described in
 

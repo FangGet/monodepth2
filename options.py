@@ -24,7 +24,7 @@ class MonodepthOptions:
         self.parser.add_argument("--log_dir",
                                  type=str,
                                  help="log directory",
-                                 default=os.path.join(os.path.expanduser("~"), "tmp"))
+                                 default="/data01/zhaofang/project/monodepth2/log/")
 
         # TRAINING options
         self.parser.add_argument("--model_name",
@@ -73,7 +73,7 @@ class MonodepthOptions:
         self.parser.add_argument("--max_depth",
                                  type=float,
                                  help="maximum depth",
-                                 default=100.0)
+                                 default=80.0)
         self.parser.add_argument("--use_stereo",
                                  help="if set, uses stereo pair for training",
                                  action="store_true")
@@ -87,7 +87,7 @@ class MonodepthOptions:
         self.parser.add_argument("--batch_size",
                                  type=int,
                                  help="batch size",
-                                 default=12)
+                                 default=8)
         self.parser.add_argument("--learning_rate",
                                  type=float,
                                  help="learning rate",
@@ -100,6 +100,10 @@ class MonodepthOptions:
                                  type=int,
                                  help="step size of the scheduler",
                                  default=15)
+        self.parser.add_argument("--num_output_channels",
+                                 type=int,
+                                 help="output_channels",
+                                 default=80)
 
         # ABLATION options
         self.parser.add_argument("--v1_multiscale",
@@ -127,6 +131,12 @@ class MonodepthOptions:
                                  help="how many images the pose network gets",
                                  default="pairs",
                                  choices=["pairs", "all"])
+        self.parser.add_argument("--depth_model_type",
+                                 type=str,
+                                 help="depth model type",
+                                 default="full",
+                                 choices=["base", "nlb", "ddv", "full"])
+                                 
         self.parser.add_argument("--pose_model_type",
                                  type=str,
                                  help="normal or shared",
